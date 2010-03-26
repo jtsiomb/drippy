@@ -54,7 +54,7 @@ int rip_bink(FILE *fp)
 	if(verbose) {
 		printf("found RAD Game Tools Bink video file at offset: %lxh\n", pos);
 		printf("  size: %dx%d\n", hdr.width, hdr.height);
-		printf("  framerate: %.2f\n", (float)hdr.num / (float)hdr.den);
+		printf("  framerate: %.2f\n", (float)hdr.fps_num / (float)hdr.fps_den);
 	}
 
 	fseek(fp, pos, SEEK_SET);
