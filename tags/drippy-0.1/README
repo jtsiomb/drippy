@@ -1,0 +1,14 @@
+drippy 0.1 - datafile ripper
+by John Tsiombikas <nuclear@member.fsf.org>
+
+This little tool searches through any unknown archive or data pack, and extracts
+all files that it recognizes from it.
+
+The only restriction is that files inside the archive must not be broken into
+pieces, scrambled or encrypted in any way, otherwise there's no way to recognize
+and extract them without knowledge of the archive format.
+
+Drip is free software, and you may freely use, modify and redistribute it under
+the terms of the GNU General Public License version 3, or at your option any
+later version published by the Free Software Foundation. See COPYING for
+details.
