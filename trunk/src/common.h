@@ -38,6 +38,7 @@ int dump(FILE *in, size_t len, const char *suffix, const char *desc);
 /* format rippers */
 int rip_avi(FILE *fp);
 int rip_wav(FILE *fp);
+int rip_ogg(FILE *fp);
 int rip_bink(FILE *fp);
 int rip_smacker(FILE *fp);
 int rip_jpeg(FILE *fp);
