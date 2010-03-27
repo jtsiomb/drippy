@@ -29,6 +29,7 @@ struct {
 } fmt[] = {
 	{"RIFF", "avi", rip_avi},
 	/*{"RIFF", "wav", rip_wav},*/
+	{"OggS", "ogg", rip_ogg},
 	{"BIK", "bink", rip_bink},
 	{"SMK", "smacker", rip_smacker},
 	{"\xff\xd8\xff\xe0", "jpeg", rip_jpeg},
