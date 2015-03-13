@@ -1,4 +1,0 @@
-2010-03-26  John Tsiombikas  <nuclear@member.fsf.org>
-
-	* Initial release 0.1 including support for png, jpeg, bink, smacker, and
-	avi file extraction.

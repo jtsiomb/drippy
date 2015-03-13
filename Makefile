@@ -3,7 +3,6 @@ src = $(wildcard src/*.c)
 obj = $(src:.c=.o)
 bin = drippy
 
-CC = gcc
 CFLAGS = -pedantic -Wall -g
 
 $(bin): $(obj)

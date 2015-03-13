@@ -1,12 +1,21 @@
-drippy 0.1 - datafile ripper
+drippy - datafile ripper
 by John Tsiombikas <nuclear@member.fsf.org>
 
-This little tool searches through any unknown archive or data pack, and extracts
+Drippy searches through any unknown archive or data pack, and extracts
 all files that it recognizes from it.
 
 The only restriction is that files inside the archive must not be broken into
 pieces, scrambled or encrypted in any way, otherwise there's no way to recognize
 and extract them without knowledge of the archive format.
+
+Supported Filetypes
+-------------------
+ * JPEG image
+ * PNG image
+ * Microsoft AVI video
+ * OGG audio/video
+ * RAD Game Tools Bink video
+ * RAD Game Tools Smacker video
 
 Drip is free software, and you may freely use, modify and redistribute it under
 the terms of the GNU General Public License version 3, or at your option any
