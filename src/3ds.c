@@ -1,6 +1,6 @@
 /*
 This file is part of "drippy", a datafile ripper.
-Copyright (C) 2010-2018 John Tsiombikas <nuclear@member.fsf.org>
+Copyright (C) 2018 John Tsiombikas <nuclear@member.fsf.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,34 +15,21 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef COMMON_H_
-#define COMMON_H_
-
 #include <stdio.h>
-#include <inttypes.h>
+#include "common.h"
 
-#define FOURCC(a, b, c, d)	\
-	(((uint32_t)a) | (((uint32_t)b) << 8) | \
-	 (((uint32_t)c) << 16) | (((uint32_t)d) << 24))
+int rip_3ds(FILE *fp)
+{
+	uint32_t size;
+	long pos;
 
-long filesize;
-int verbose;
+	pos = ftell(fp) - 2;
 
-int nextc(FILE *fp);
-int lastchars(const char *key, int num);
-void reset_prev(void);
+	if(fread(&size, sizeof size, 1, fp) < 1) {
+		return -1;
+	}
 
-/* in drip.c */
-int dump(FILE *in, size_t len, const char *suffix, const char *desc);
+	fseek(fp, pos, SEEK_SET);
 
-/* format rippers */
-int rip_avi(FILE *fp);
-int rip_wav(FILE *fp);
-int rip_ogg(FILE *fp);
-int rip_bink(FILE *fp);
-int rip_smacker(FILE *fp);
-int rip_jpeg(FILE *fp);
-int rip_png(FILE *fp);
-int rip_3ds(FILE *fp);
-
-#endif	/* COMMON_H_ */
+	return dump(fp, size, "3ds", "3DS scene file");
+}
