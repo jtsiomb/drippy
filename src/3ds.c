@@ -18,15 +18,47 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 #include "common.h"
 
+enum {
+	CID_MAIN3DS = 0x4d4d,
+	CID_EDIT3DS = 0x3d3d,
+	CID_KEYF3DS = 0xb000
+};
+
+struct chunk {
+	uint16_t id;
+	uint32_t size;
+};
+
+static int read_chunk_header(FILE *fp, struct chunk *c)
+{
+	if(fread(c, sizeof *c, 1, fp) < 1) {
+		return -1;
+	}
+	return 0;
+}
+
 int rip_3ds(FILE *fp)
 {
+	struct chunk c;
 	uint32_t size;
 	long pos;
 
 	pos = ftell(fp) - 2;
 
-	if(fread(&size, sizeof size, 1, fp) < 1) {
+	if(read_chunk_header(fp, &c) == -1 || c.id != CID_MAIN3DS) {
 		return -1;
+	}
+	size = c.size;
+
+	if(pos + size > filesize) {
+		return -1;
+	}
+
+	if(read_chunk_header(fp, &c) == -1) {
+		return -1;
+		if(c.id != CID_EDIT3DS || c.id != CID_KEYF3DS) {
+			return -1;
+		}
 	}
 
 	fseek(fp, pos, SEEK_SET);
